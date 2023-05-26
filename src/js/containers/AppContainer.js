@@ -131,178 +131,173 @@ class AppContainer extends Component {
 
     if (clicked === false) {
       return (
-        <div className="app-container">
-          <div
-            className="location-header nav justify-content-center"
-            style={{ paddingTop: "20px" }}
-          >
-            <Link to="/wallet">
-              <div
-                className="location-header-arrow fa fa-arrow-left"
-                style={{ fontSize: "1.5em" }}
-              />
-            </Link>
-            <h2 className="location-header-text">
-              {clickReducer.ticketType}{" "}
-              {clickReducer.ticketType === "Monthly"
-                ? null
-                : clickReducer.ticket}
-            </h2>
-          </div>
-          <div className="time-block-button-wrapper">
-            <div className="time-block-wrapper">
-              <TimeContainer handleClick={this.handleClick} />
-              <ColorBlock
-                handleClick={this.handleClick}
-                block1={block1}
-                block2={block2}
-                block3={block3}
-                colorToggle1={colorToggle1}
-                colorToggle2={colorToggle2}
-                colorToggle3={colorToggle3}
-                handleChangeComplete1={this.handleChangeComplete1}
-                handleChangeComplete2={this.handleChangeComplete2}
-                handleChangeComplete3={this.handleChangeComplete3}
-                toggleColor1={this.toggleColor1}
-                toggleColor2={this.toggleColor2}
-                toggleColor3={this.toggleColor3}
-              />
-              <div className="tap-button">Tap to reveal barcode</div>
-            </div>
-            <div style={{ paddingBottom: 5, backgroundColor: "#f1f1f1" }}>
-              <a href="#">
-                <Button handleClick={this.handleClick} clicked={clicked} />
-              </a>
-            </div>
-          </div>
-          <div className="app-container-lower">
-            {showActivate && (
-              <div
-                className="ticket-activated-at"
-                onClick={this.toggleActivate}
-              >
-                Ticket activated at{" "}
-                {excludeHour.includes(hour)
-                  ? activated.slice(0, 5)
-                  : activated.slice(0, 4)}{" "}
-                {activated.slice(-2)}
-              </div>
-            )}
-            <div className="ticket-type-info" onClick={this.switchPeak}>
-              {clickReducer.ticketType}{" "}
-              {clickReducer.ticketType === "Monthly"
-                ? " - " + thisMonth
-                : clickReducer.ticket}
-            </div>
-            <div className="lirr">Long Island Rail Road</div>
-            <div
-              className="ticket-area-code"
-              style={{
-                backgroundColor:
-                  clickReducer.ticketType === "Monthly" ? "#F5EFCF" : "#D9EBEF"
-              }}
-            >
-              <div
-                className={`mtaLogo-bg ${
-                  clickReducer.ticketType === "Monthly" ? "wht-logo" : ""
-                }`}
-              >
-                <img
-                  src={
-                    clickReducer.ticketType === "Monthly"
-                      ? mtaLogoWht
-                      : mtaLogoBlue
-                  }
-                />
-              </div>
-              <div
-                className="ticket-area-code-wrapper1"
-                onClick={this.switchDestinations}
-              >
-                <div className="ticket-area-code-origindest">
-                  {clickReducer.clickedOrigin}
-                </div>
-                {clickReducer.clickedOrigin === "Penn Station" ? (
-                  <div className="ticket-area-code-areanum">1</div>
-                ) : (
-                  <div className="ticket-area-code-areanum">3</div>
-                )}
-                <div className="ticket-area-code-origindest">
-                  {clickReducer.clickedDestination}
-                </div>
-                {clickReducer.clickedDestination === "Penn Station" ? (
-                  <div className="ticket-area-code-areanum">1</div>
-                ) : (
-                  <div className="ticket-area-code-areanum">3</div>
-                )}
-              </div>
-              {clickReducer.ticketType === "Monthly" && (
-                <div className="ticket-area-code-month">
-                  <div
-                    className="ticket-area-code-month-wrapper"
-                    onClick={() => {
-                      this.nextTicketType("One-Way");
-                    }}
-                  >
-                    {thisMonth
-                      .slice(0, 3)
-                      .split("")
-                      .map(letter => (
-                        <div className="ticket-area-code-letter">
-                          {letter.toUpperCase()}
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              )}
-              {clickReducer.clickedOrigin === "Penn Station" &&
-                clickReducer.ticketType !== "Monthly" && (
-                  <div className="ticket-area-code-wrapper2">
-                    <div
-                      className="ticket-area-code-circle-bottom"
-                      onClick={() => {
-                        this.nextTicketType("Monthly");
-                      }}
-                    >
-                      <div className="ticket-area-code-circle-inner-bottom">
-                        {clickReducer.ticket.split("").slice(0, 1)}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              {clickReducer.clickedOrigin !== "Penn Station" &&
-                clickReducer.ticketType !== "Monthly" && (
-                  <div className="ticket-area-code-wrapper2">
-                    <div
-                      className="ticket-area-code-circle-top"
-                      onClick={() => {
-                        this.nextTicketType("Monthly");
-                      }}
-                    >
-                      <div className="ticket-area-code-circle-inner-top">
-                        {clickReducer.ticket.split("").slice(0, 1)}
-                      </div>
-                    </div>
-                  </div>
-                )}
-            </div>
-            <div className="ticket-type-info" style={{ marginBottom: "150px" }}>
-              <div
-                className="ticket-train-button"
-                style={{ marginRight: "5px" }}
-              >
-                Actions
-              </div>
-              <div
-                className="ticket-train-button"
-                style={{ marginLeft: "5px" }}
-              >
-                Ticket Info
-              </div>
-            </div>
-          </div>
-        </div>
-      );
+				<div className="app-container">
+					<div
+						className="location-header nav justify-content-center"
+						style={{ paddingTop: "20px" }}
+					>
+						<Link to="/wallet">
+							<div
+								className="location-header-arrow fa fa-arrow-left"
+								style={{ fontSize: "1.5em" }}
+							/>
+						</Link>
+						<h2 className="location-header-text">
+							{clickReducer.ticketType}{" "}
+							{clickReducer.ticketType === "Monthly"
+								? null
+								: clickReducer.ticket}
+						</h2>
+					</div>
+					<Barcode />
+					<div className="time-block-button-wrapper">
+						<div className="time-block-wrapper">
+							<TimeContainer handleClick={this.handleClick} />
+							<ColorBlock
+								handleClick={this.handleClick}
+								block1={block1}
+								block2={block2}
+								block3={block3}
+								colorToggle1={colorToggle1}
+								colorToggle2={colorToggle2}
+								colorToggle3={colorToggle3}
+								handleChangeComplete1={this.handleChangeComplete1}
+								handleChangeComplete2={this.handleChangeComplete2}
+								handleChangeComplete3={this.handleChangeComplete3}
+								toggleColor1={this.toggleColor1}
+								toggleColor2={this.toggleColor2}
+								toggleColor3={this.toggleColor3}
+							/>
+						</div>
+					</div>
+					<div className="app-container-lower">
+						{showActivate && (
+							<div
+								className="ticket-activated-at"
+								onClick={this.toggleActivate}
+							>
+								Ticket activated at{" "}
+								{excludeHour.includes(hour)
+									? activated.slice(0, 5)
+									: activated.slice(0, 4)}{" "}
+								{activated.slice(-2)}
+							</div>
+						)}
+						<div className="ticket-type-info" onClick={this.switchPeak}>
+							{clickReducer.ticketType}{" "}
+							{clickReducer.ticketType === "Monthly"
+								? " - " + thisMonth
+								: clickReducer.ticket}
+						</div>
+						<div className="lirr">Long Island Rail Road</div>
+						<div
+							className="ticket-area-code"
+							style={{
+								backgroundColor:
+									clickReducer.ticketType === "Monthly" ? "#F5EFCF" : "#D9EBEF",
+							}}
+						>
+							<div
+								className={`mtaLogo-bg ${
+									clickReducer.ticketType === "Monthly" ? "wht-logo" : ""
+								}`}
+							>
+								<img
+									src={
+										clickReducer.ticketType === "Monthly"
+											? mtaLogoWht
+											: mtaLogoBlue
+									}
+								/>
+							</div>
+							<div
+								className="ticket-area-code-wrapper1"
+								onClick={this.switchDestinations}
+							>
+								<div className="ticket-area-code-origindest">
+									{clickReducer.clickedOrigin}
+								</div>
+								{clickReducer.clickedOrigin === "Penn Station" ? (
+									<div className="ticket-area-code-areanum">1</div>
+								) : (
+									<div className="ticket-area-code-areanum">3</div>
+								)}
+								<div className="ticket-area-code-origindest">
+									{clickReducer.clickedDestination}
+								</div>
+								{clickReducer.clickedDestination === "Penn Station" ? (
+									<div className="ticket-area-code-areanum">1</div>
+								) : (
+									<div className="ticket-area-code-areanum">3</div>
+								)}
+							</div>
+							{clickReducer.ticketType === "Monthly" && (
+								<div className="ticket-area-code-month">
+									<div
+										className="ticket-area-code-month-wrapper"
+										onClick={() => {
+											this.nextTicketType("One-Way");
+										}}
+									>
+										{thisMonth
+											.slice(0, 3)
+											.split("")
+											.map((letter) => (
+												<div className="ticket-area-code-letter">
+													{letter.toUpperCase()}
+												</div>
+											))}
+									</div>
+								</div>
+							)}
+							{clickReducer.clickedOrigin === "Penn Station" &&
+								clickReducer.ticketType !== "Monthly" && (
+									<div className="ticket-area-code-wrapper2">
+										<div
+											className="ticket-area-code-circle-bottom"
+											onClick={() => {
+												this.nextTicketType("Monthly");
+											}}
+										>
+											<div className="ticket-area-code-circle-inner-bottom">
+												{clickReducer.ticket.split("").slice(0, 1)}
+											</div>
+										</div>
+									</div>
+								)}
+							{clickReducer.clickedOrigin !== "Penn Station" &&
+								clickReducer.ticketType !== "Monthly" && (
+									<div className="ticket-area-code-wrapper2">
+										<div
+											className="ticket-area-code-circle-top"
+											onClick={() => {
+												this.nextTicketType("Monthly");
+											}}
+										>
+											<div className="ticket-area-code-circle-inner-top">
+												{clickReducer.ticket.split("").slice(0, 1)}
+											</div>
+										</div>
+									</div>
+								)}
+						</div>
+						<div className="ticket-type-info" style={{ marginBottom: "150px" }}>
+							<div
+								className="ticket-train-button"
+								style={{ marginRight: "5px" }}
+							>
+								Actions
+							</div>
+							<div
+								className="ticket-train-button"
+								style={{ marginLeft: "5px" }}
+							>
+								Ticket Info
+							</div>
+						</div>
+					</div>
+				</div>
+			);
     } else {
       return (
         <div className="app-container">
@@ -321,15 +316,6 @@ class AppContainer extends Component {
               {" "}
               {clickReducer.ticketType} {clickReducer.ticket}
             </h2>
-          </div>
-          <div className="time-block-button-wrapper animated slideInUp">
-            <div className="time-block-wrapper">
-              <Barcode />
-              <div className="tap-button">Tap to reveal color bar</div>
-            </div>
-            <a href="#">
-              <Button handleClick={this.handleClick} clicked={clicked} />
-            </a>
           </div>
           <div>
             <div>
