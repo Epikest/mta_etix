@@ -144,7 +144,8 @@ class AppContainer extends Component {
 						</Link>
 						<h2 className="location-header-text">
 							{clickReducer.ticketType}{" "}
-							{clickReducer.ticketType === "Monthly"
+							{clickReducer.ticketType === "Monthly" ||
+							clickReducer.ticketType === "School Monthly"
 								? null
 								: clickReducer.ticket}
 						</h2>
@@ -185,7 +186,8 @@ class AppContainer extends Component {
 						)}
 						<div className="ticket-type-info" onClick={this.switchPeak}>
 							{clickReducer.ticketType}{" "}
-							{clickReducer.ticketType === "Monthly"
+							{clickReducer.ticketType === "Monthly" ||
+							clickReducer.ticketType === "School Monthly"
 								? " - " + thisMonth
 								: clickReducer.ticket}
 						</div>
@@ -194,17 +196,24 @@ class AppContainer extends Component {
 							className="ticket-area-code"
 							style={{
 								backgroundColor:
-									clickReducer.ticketType === "Monthly" ? "#F5EFCF" : "#D9EBEF",
+									clickReducer.ticketType === "Monthly" ||
+									clickReducer.ticketType === "School Monthly"
+										? "#F5EFCF"
+										: "#D9EBEF",
 							}}
 						>
 							<div
 								className={`mtaLogo-bg ${
-									clickReducer.ticketType === "Monthly" ? "wht-logo" : ""
+									clickReducer.ticketType === "Monthly" ||
+									clickReducer.ticketType === "School Monthly"
+										? "wht-logo"
+										: ""
 								}`}
 							>
 								<img
 									src={
-										clickReducer.ticketType === "Monthly"
+										clickReducer.ticketType === "Monthly" ||
+										clickReducer.ticketType === "School Monthly"
 											? mtaLogoWht
 											: mtaLogoBlue
 									}
@@ -231,25 +240,26 @@ class AppContainer extends Component {
 									<div className="ticket-area-code-areanum">3</div>
 								)}
 							</div>
-							{clickReducer.ticketType === "Monthly" && (
-								<div className="ticket-area-code-month">
-									<div
-										className="ticket-area-code-month-wrapper"
-										onClick={() => {
-											this.nextTicketType("One-Way");
-										}}
-									>
-										{thisMonth
-											.slice(0, 3)
-											.split("")
-											.map((letter) => (
-												<div className="ticket-area-code-letter">
-													{letter.toUpperCase()}
-												</div>
-											))}
+							{clickReducer.ticketType === "Monthly" ||
+								(clickReducer.ticketType === "School Monthly" && (
+									<div className="ticket-area-code-month">
+										<div
+											className="ticket-area-code-month-wrapper"
+											onClick={() => {
+												this.nextTicketType("One-Way");
+											}}
+										>
+											{thisMonth
+												.slice(0, 3)
+												.split("")
+												.map((letter) => (
+													<div className="ticket-area-code-letter">
+														{letter.toUpperCase()}
+													</div>
+												))}
+										</div>
 									</div>
-								</div>
-							)}
+								))}
 							{clickReducer.clickedOrigin === "Penn Station" &&
 								clickReducer.ticketType !== "Monthly" && (
 									<div className="ticket-area-code-wrapper2">
@@ -266,7 +276,8 @@ class AppContainer extends Component {
 									</div>
 								)}
 							{clickReducer.clickedOrigin !== "Penn Station" &&
-								clickReducer.ticketType !== "Monthly" && (
+								clickReducer.ticketType !== "Monthly" &&
+								clickReducer.ticketType !== "School Monthly" && (
 									<div className="ticket-area-code-wrapper2">
 										<div
 											className="ticket-area-code-circle-top"

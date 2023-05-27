@@ -42,6 +42,11 @@ class TicketType extends Component {
               </Link>
             </div>
             <div className="location-list-blah">
+              <Link to='/school-monthly'>
+                <div className="ticket-each" onClick={ this.handleTicketType } id="School Monthly">School Monthly<span className="location-arrow fa fa-angle-right" style={{color: "orange", fontSize: "1.8em"}}></span></div>
+              </Link>
+            </div>
+            <div className="location-list-blah">
               <Link to='/one-way'>
                 <div className="ticket-each" onClick={ this.handleTicketType } id="One Way">One Way<span className="location-arrow fa fa-angle-right" style={{color: "orange", fontSize: "1.8em"}}></span></div>
               </Link>

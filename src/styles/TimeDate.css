@@ -13,9 +13,12 @@
     -2px -2px 5px rgba(25, 25, 25, 1), 2px -2px 5px rgba(25, 25, 25, 1),
     -2px 2px 5px rgba(25, 25, 25, 1), 2px 2px 5px rgba(25, 25, 25, 1);
   position: relative;
-  animation-name: example;
-  animation-duration: 8s;
-  animation-iteration-count: 100;
+  -webkit-animation-name: example;
+          animation-name: example;
+  -webkit-animation-duration: 8s;
+          animation-duration: 8s;
+  -webkit-animation-iteration-count: 100;
+          animation-iteration-count: 100;
   max-width: 250px;
 }
 
@@ -32,11 +35,11 @@
 }
 
 .timeclock-time {
+  font-size: 25px;
   letter-spacing: 1px;
-  line-height: 90%;
-  margin: -5px 0 2px 0;
+  line-height: 0%;
   padding: 0;
-  font-size: 34px;
+  white-space: nowrap;
 }
 
 .timeclock-date {
@@ -49,18 +52,18 @@
 
 @-webkit-keyframes example {
   0% {
-    left: -5px;
+    left: 25px;
   }
   25% {
-    left: 130px;
+    left: 65px;
   }
   50% {
-    left: -5px;
+    left: 25px;
   }
   75% {
-    left: 130px;
+    left: 65px;
   }
   100% {
-    left: -5px;
+    left: 25px;
   }
 }

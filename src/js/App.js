@@ -10,6 +10,7 @@ import BuyTickets from './components/BuyTickets.js';
 import TicketType from './components/TicketType.js';
 import TenTrip from './components/ticketTypes/TenTrip.js';
 import Monthly from './components/ticketTypes/Monthly.js';
+import SchoolMonthly from './components/ticketTypes/SchoolMonthly.js';
 import OneWay from './components/ticketTypes/OneWay.js';
 import RoundTrip from './components/ticketTypes/RoundTrip.js';
 import Weekly from './components/ticketTypes/Weekly.js';
@@ -30,6 +31,7 @@ class App extends Component {
           <Route exact path="/ticket-type" render={() => <TicketType/>}/>
           <Route exact path="/ten-trip" render={() => <TenTrip/>}/>
           <Route exact path="/monthly" render={() => <Monthly/>}/>
+          <Route exact path="/school-monthly" render={() => <SchoolMonthly/>}/>
           <Route exact path="/one-way" render={() => <OneWay/>}/>
           <Route exact path="/round-trip" render={() => <RoundTrip/>}/>
           <Route exact path="/weekly" render={() => <Weekly/>}/>
