@@ -20,7 +20,7 @@ function Barcode() {
 		const interval = setInterval(() => {
 			const newQRCodeData = generateQRCodeData();
 			setQRCodeData(newQRCodeData);
-		}, 3000);
+		}, 2000);
 
 		return () => {
 			clearInterval(interval);
